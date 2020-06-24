@@ -1,0 +1,68 @@
+﻿@model BookStore.Models.CartIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    #cartTable td { 
+        vertical-align: middle;
+    }
+</style>
+<h2>Your Cart</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table id="cartTable" class="table">
+    <thead>
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>Quantity</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Cart.Lines)
+        {
+            <tr>
+                <td class="text-center">
+                    @product.Product.Name
+                </td>
+                <td>
+                    @product.Product
+                </td>
+                <td>
+                    @product.Product.Price
+                </td>
+                <td>
+                    (@product.Product.Price * @product.Quantity).ToString("c")
+                </td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Cart", "POST"))
+                    {
+                        @Html.Hidden("productId", product.Product.Id)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="btn btn-warning btn-sm" type="submit" value="Remove" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">@Model.Cart.ComputeTotalValue().ToString("c")</td>
+        </tr>
+    </tfoot>
+
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a> 
+    @Html.ActionLink("Checkout Now", "Checkout", null, new { @class = "btn btn-primary"})
+</div>
