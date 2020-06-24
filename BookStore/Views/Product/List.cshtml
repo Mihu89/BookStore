@@ -1,0 +1,16 @@
+﻿@model BookStore.Models.ProductListViewModel
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+@foreach (var p in Model.Products)
+{
+    @Html.Partial("ProductSummary", p)
+}
+
+<div class="btn-group pull-right">
+
+</div>
+
