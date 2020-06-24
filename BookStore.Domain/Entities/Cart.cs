@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BookStore.Domain.Entities
 {
     public class Cart
-    {       [Key]
+    {   [Key]
         public int Id { get; set; }
         private List<CartLine> _linesCollection = new List<CartLine>();
 

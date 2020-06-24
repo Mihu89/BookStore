@@ -7,6 +7,7 @@ namespace BookStore.Domain.Migrations
     {
         public override void Up()
         {
+           // Sql("insert into fdsfdsf")    example of wrinting sql in Down methoth write inverse changes)
             CreateTable(
                 "dbo.Categories",
                 c => new
