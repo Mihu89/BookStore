@@ -12,6 +12,5 @@
         public string Street { get; set; }
         public string StreetNumber { get; set; }
         public string Zip { get; set; }
-
     }
 }

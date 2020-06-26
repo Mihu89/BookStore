@@ -5,9 +5,10 @@
 }
 
 <h2>List</h2>
+<div>@Model.Products.Count()</div>
 @foreach (var p in Model.Products)
 {
-    @Html.Partial("ProductSummary", p)
+    @Html.Partial("_ProductSummary", p)
 }
 
 <div class="btn-group pull-right">

@@ -24,5 +24,10 @@ namespace BookStore.Domain.Entities
 
         public DateTime CreatedDate { get; set; }
         public DateTime ExpirationDate { get; set; }
+
+        public Product()
+        {
+            Categories = new List<Category>();
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BookStore.Domain.Entities;
 using BookStore.Domain.Interfaces;
 using BookStore.Models;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,12 +23,13 @@ namespace BookStore.Controllers
         }
 
         // GET: Product
-        public ViewResult List(int categoryId, int page = 1)
+        public ViewResult List(int categoryId = 1, int page = 1)
         {
+            var source = productRepository.GetProductsByCategoryId(categoryId); ;
+
             ProductListViewModel model = new ProductListViewModel
             {
-                Products = productRepository.Products
-                .Where(p => p.Categories.Any(x => x.Id == categoryId))
+                Products = source
                 .OrderBy(p => p.Name)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize),
@@ -35,9 +37,7 @@ namespace BookStore.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = productRepository.Products
-                    .Where(x => x.Categories
-                        .All(c => c.Id == categoryId)).Count()
+                    TotalItems = source.Count()
                 },
                 Category = CurrentCategory
             };
