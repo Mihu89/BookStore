@@ -15,6 +15,8 @@ namespace BookStore.Domain.Implementation
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            // may be forgot this?
+            //Configuration.LazyLoadingEnabled = true;
         }
 
         public virtual DbSet<Client> Clients { get; set; }
