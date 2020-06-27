@@ -15,7 +15,7 @@ namespace BookStore.Domain.Implementation.Repo
         {
             get
             {
-                return context.Products;
+                return context.Products.AsNoTracking();
             }
         }
 
@@ -29,6 +29,19 @@ namespace BookStore.Domain.Implementation.Repo
             }
         }
 
+        public int GetLastOrder()
+        {
+            var order = context.Orders.OrderByDescending(x => x.Id).FirstOrDefault();
+            if (order == null)
+            {
+                return 1;
+            }
+            else
+            {
+                return order.Id;
+            }
+        }
+
         public Category GetPrincipalCategory(Product product)
         {
             if (product != null)
@@ -38,6 +51,15 @@ namespace BookStore.Domain.Implementation.Repo
             }
             return context.Categories
                 .FirstOrDefault();
+        }
+
+        public void SaveOrder(Order order)
+        {
+            if (order != null)
+            {
+                context.Orders.Add(order);
+                context.SaveChanges();
+            }
         }
 
         public void SaveProduct(Product product)

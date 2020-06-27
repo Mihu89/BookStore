@@ -5,7 +5,7 @@
 }
 
 <style>
-    #cartTable td { 
+    #cartTable td {
         vertical-align: middle;
     }
 </style>
@@ -14,7 +14,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
 <table id="cartTable" class="table">
     <thead>
         <tr>
@@ -34,18 +34,18 @@
                     @product.Product.Name
                 </td>
                 <td>
-                    @product.Product
+                    @product.Quantity
                 </td>
                 <td>
                     @product.Product.Price
                 </td>
                 <td>
-                    (@product.Product.Price * @product.Quantity).ToString("c")
+                    @((product.Product.Price * product.Quantity).ToString("c"))
                 </td>
                 <td>
                     @using (Html.BeginForm("RemoveFromCart", "Cart", "POST"))
                     {
-                        @Html.Hidden("productId", product.Product.Id)
+                        @Html.Hidden("Id", product.Product.Id)
                         @Html.HiddenFor(x => x.ReturnUrl)
                         <input class="btn btn-warning btn-sm" type="submit" value="Remove" />
                     }
@@ -63,6 +63,6 @@
 </table>
 
 <div class="text-center">
-    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a> 
-    @Html.ActionLink("Checkout Now", "Checkout", null, new { @class = "btn btn-primary"})
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a>
+    @Html.ActionLink("Checkout Now", "Checkout", null, new { @class = "btn btn-primary" })
 </div>

@@ -13,5 +13,7 @@ namespace BookStore.Domain.Interfaces
         void SaveProduct(Product product);
         void DeleteProduct(Product product);
         Category GetPrincipalCategory(Product product);
+        int GetLastOrder();
+        void SaveOrder(Order order); 
     }
 }

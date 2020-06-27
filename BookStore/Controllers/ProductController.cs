@@ -25,8 +25,8 @@ namespace BookStore.Controllers
         // GET: Product
         public ViewResult List(int categoryId = 1, int page = 1)
         {
-            var source = productRepository.Products
-                .Where(p => p.Categories.Any(x => x.Id == categoryId));
+            var source = productRepository.Products;
+               // .Where(p => p.Categories.Contains(CurrentCategory));
 
             ProductListViewModel model = new ProductListViewModel
             {

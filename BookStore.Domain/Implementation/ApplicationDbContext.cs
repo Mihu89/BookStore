@@ -17,15 +17,15 @@ namespace BookStore.Domain.Implementation
         {
         }
 
-        public virtual DbSet<Client> Clients { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
-        public virtual DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
 
-        public virtual DbSet<ShippingDetail> ShippingDetails { get; set; }
+        public DbSet<ShippingDetail> ShippingDetails { get; set; }
 
-        public virtual DbSet<Order> Orders { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
-        public virtual DbSet<Category> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public static ApplicationDbContext Create()
         {
