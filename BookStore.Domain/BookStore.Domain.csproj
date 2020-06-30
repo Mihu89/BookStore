@@ -189,9 +189,12 @@
     <Compile Include="Entities\ShippingDetail.cs" />
     <Compile Include="Implementation\ApplicationDbContext.cs" />
     <Compile Include="Implementation\EmailOrderProcessor.cs" />
+    <Compile Include="Implementation\Repo\GenericRepository.cs" />
     <Compile Include="Implementation\Repo\ProductRepository.cs" />
+    <Compile Include="Implementation\UnitOfWork.cs" />
     <Compile Include="Interfaces\IOrderProcessor.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Migrations\202006221909037_First.cs" />
     <Compile Include="Migrations\202006221909037_First.Designer.cs">
       <DependentUpon>202006221909037_First.cs</DependentUpon>
